@@ -183,7 +183,7 @@ public class BoggleGraphics extends GraphicsProgram{
 	//to make sounds work with .wav files now
 	private void playSound(String filePath) {
 		try {
-			File audioFile = new File(filePath);
+			File audioFile = new File("sounds/" + filePath);
 			AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
 			Clip clip = AudioSystem.getClip();
 			clip.open(audioStream);
