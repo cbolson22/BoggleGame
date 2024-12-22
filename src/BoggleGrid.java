@@ -32,7 +32,8 @@ public class BoggleGrid {
 	
 	public void randomize() {
 		ArrayList<Character> c = new ArrayList<Character>(16);
-		//picks a random face of a die and adds it to a random spot in the list
+		// Picks a random face of a die and adds it to a random spot in the list
+		
 		for(int i = 0; i < DICE.length; i++) {
 			c.add((int) (Math.random()*c.size()), DICE[i][(int)(Math.random()*6)]);
 		}
@@ -59,7 +60,7 @@ public class BoggleGrid {
 		}
 	}
 	
-	public static void main( String[] args) {
+	public static void main(String[] args) {
 		BoggleGrid b = new BoggleGrid();
 		b.printGrid();
 	}

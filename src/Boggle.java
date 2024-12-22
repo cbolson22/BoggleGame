@@ -22,8 +22,8 @@ public class Boggle {
     }
 
     public ArrayList<String> wordsToArrayList() {
-        HashSet<String> uniqueWords = new HashSet<>();
-        HashSet<String> prefixes = generatePrefixes(); // Generate prefixes for pruning
+        HashSet<String> uniqueWords = new HashSet<>(); // To Store unique words in hash set
+        HashSet<String> prefixes = generatePrefixes(); // Generate prefixes
         int rows = 4, cols = 4;
 
         // DFS for each cell
@@ -34,9 +34,7 @@ public class Boggle {
             }
         }
 
-        System.out.println("UNIQUE: " + uniqueWords);
         wordsInBoard = new ArrayList<>(uniqueWords); // Convert HashSet to ArrayList
-    
         wordsInBoard.sort(String::compareTo);
         
         return wordsInBoard;
@@ -48,8 +46,9 @@ public class Boggle {
         }
 
         visited[row][col] = true;
-        currentWord.append(Character.toLowerCase(grid.getSquare(row, col)));
+        currentWord.append(Character.toLowerCase(grid.getSquare(row, col)));    // Lowercase because bogwords.txt is lowercase
 
+        // Stop (return) if no longer possible to make word
         if (!prefixes.contains(currentWord.toString())) {
             visited[row][col] = false;
             currentWord.deleteCharAt(currentWord.length() - 1);
@@ -63,11 +62,12 @@ public class Boggle {
         int[] rowOffsets = {-1, -1, -1, 0, 0, 1, 1, 1};
         int[] colOffsets = {-1, 0, 1, -1, 1, -1, 0, 1};
 
+        // Try dfs on all possible directions
         for (int k = 0; k < 8; k++) {
             dfs(row + rowOffsets[k], col + colOffsets[k], currentWord, visited, uniqueWords, prefixes);
         }
 
-        visited[row][col] = false;
+        visited[row][col] = false;  // Backtrack so can visit this square again for other paths
         currentWord.deleteCharAt(currentWord.length() - 1);
 
     }
@@ -90,14 +90,10 @@ public class Boggle {
             total_score += word.length();
         }
 
-        return total_score;  // Placeholder logic
+        return total_score;
     }
 
     public WordDictionary getWordsInBoard() {
-        // Return a dictionary-like object for word validation
-
-        // USE grid
-
         return new WordDictionary(wordsInBoard);
     }
 
@@ -122,7 +118,7 @@ class WordDictionary {
     }
 
     public int getVal(String word) {
-        // Return a value for the word, e.g., points if it exists, -1 otherwise
+        // Return the value for the word if it exists, -1 otherwise
         return words.contains(word) ? word.length() : -1;
     }
 }

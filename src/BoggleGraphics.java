@@ -1,5 +1,3 @@
-
-
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -90,7 +88,7 @@ public class BoggleGraphics extends GraphicsProgram{
 		startScoreLabel();
 		GLabel wordLabel = new GLabel(" ", 260, 450);
 		wordLabel.setFont("Garamond-20");
-		add(wordLabel); //the label that refreshes as user drags
+		add(wordLabel); // The label that refreshes as user drags
 	}
 	
 	private int getTime() {
@@ -130,7 +128,7 @@ public class BoggleGraphics extends GraphicsProgram{
 		timeLeft = false;
 	}
 	
-	//sets all square tiles back to white ("unfilled") so it looks like they have all been unselected
+	// Sets all square tiles back to white ("unfilled") so it looks like they have all been unselected
 	private void unfillAll() {
 		for(int i = 0; i < 4; i++) {
 			for(int k = 0; k < 4; k++) {
@@ -139,7 +137,7 @@ public class BoggleGraphics extends GraphicsProgram{
 		}
 	}
 	
-	//after the time is up, adds all remaining words the user didn't get to the screen in red
+	// After the time is up, adds all remaining words the user didn't get to the screen in red
 	private void addAllWordLabels() {
 		int labX = 500;
 		int labY = 130;
@@ -180,7 +178,7 @@ public class BoggleGraphics extends GraphicsProgram{
 	}
 	
 
-	//to make sounds work with .wav files now
+	// To make sounds work with .wav files now
 	private void playSound(String filePath) {
 		try {
 			File audioFile = new File("sounds/" + filePath);
@@ -193,13 +191,13 @@ public class BoggleGraphics extends GraphicsProgram{
 		}
 	}
 
-	//adds word as label to the screen if not already label where it should be (it hasn't been found yet)
+	// Adds word as label to the screen if not already label where it should be (it hasn't been found yet)
 	private void addWord(String word) {
 		int index = words.indexOf(word);
 		int x = 500;
 		int y = 130;
 		if(index != 0) {
-			x += (index / 17)*50;	//finding coordinates for where label should be (17 per col)
+			x += (index / 17)*50;	// Finding coordinates for where label should be (17 per col)
 			y += (index % 17)*20;
 		}
 		if(!(getElementAt(x,y) instanceof GLabel)){
@@ -209,12 +207,10 @@ public class BoggleGraphics extends GraphicsProgram{
 			this.word = word + " is a word!";
 			refreshWordLabel();
 			playSound("sfx-cartoons10.wav");
-			// MediaTools.loadAudioClip("sfx-cartoons10.au").play();
 		} else {
 			this.word = "You've already found " + word.substring(0,1).toUpperCase() + word.substring(1);
 			refreshWordLabel();
 			playSound("bounce.wav");
-			// MediaTools.loadAudioClip("bounce.au").play();
 		}
 	}
 
@@ -238,7 +234,7 @@ public class BoggleGraphics extends GraphicsProgram{
 			int x = e.getX();
 			int y = e.getY();
 			GObject object = getElementAt(x,y);
-			//only the circles within the board can be dragged on to select squares
+			// Only the circles within the board can be dragged on to select squares
 			if((object instanceof GOval) && x > 60 && x < 480 && y > 35 && y < 410) {
 				object = getElementAt(object.getX() - 1, object.getY() - 1); //gets square
 				if(((GRect)object).getFillColor().equals(Color.white) && !object.equals(lastRect)) { //so doesn't continue to fill square as move around within a circle
