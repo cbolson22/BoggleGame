@@ -1,0 +1,12 @@
+# Compiled class files
+*.class
+
+# VS Code settings
+.vscode/
+
+# IDE-specific files
+*.iml
+
+# OS-specific files
+.DS_Store
+Thumbs.db
