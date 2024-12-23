@@ -142,7 +142,7 @@ public class BoggleGraphics extends GraphicsProgram{
 		int labX = 500;
 		int labY = 130;
 		for(String str: words) {
-			//places the label if not already one there (meaning the user hasn't found it)
+			// Places the label if not already one there (meaning the user hasn't found it)
 			if(!(getElementAt(labX,labY) instanceof GLabel)) {
 				GLabel label = new GLabel(str, labX, labY);
 				label.setColor(Color.RED);
