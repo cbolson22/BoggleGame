@@ -1,9 +1,6 @@
 # Compiled class files
 *.class
 
-# VS Code settings
-.vscode/
-
 # IDE-specific files
 *.iml
 

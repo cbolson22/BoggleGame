@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Run BoggleGrid",
+            "request": "launch",
+            "mainClass": "BoggleGrid",
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "java",
+            "name": "Run BoggleGraphics",
+            "request": "launch",
+            "mainClass": "BoggleGraphics",
+            "vmArgs": "-cp ./lib/acm.jar:./src",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        }
+    ]
+}
