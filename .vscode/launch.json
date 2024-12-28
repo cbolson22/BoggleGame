@@ -3,13 +3,6 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Run BoggleGrid",
-            "request": "launch",
-            "mainClass": "BoggleGrid",
-            "console": "integratedTerminal"
-        },
-        {
-            "type": "java",
             "name": "Run BoggleGraphics",
             "request": "launch",
             "mainClass": "BoggleGraphics",
